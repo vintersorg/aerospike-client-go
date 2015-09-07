@@ -21,8 +21,8 @@ import (
 	"reflect"
 	"time"
 
-	ParticleType "github.com/aerospike/aerospike-client-go/types/particle_type"
-	Buffer "github.com/aerospike/aerospike-client-go/utils/buffer"
+	ParticleType "github.com/THE108/aerospike-client-go/types/particle_type"
+	Buffer "github.com/THE108/aerospike-client-go/utils/buffer"
 )
 
 type packer struct {

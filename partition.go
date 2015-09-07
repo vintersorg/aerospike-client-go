@@ -17,7 +17,7 @@ package aerospike
 import (
 	"fmt"
 
-	Buffer "github.com/aerospike/aerospike-client-go/utils/buffer"
+	Buffer "github.com/THE108/aerospike-client-go/utils/buffer"
 )
 
 // Partition encapsulates partition information.

@@ -17,7 +17,7 @@ package main
 import (
 	"fmt"
 
-	. "github.com/aerospike/aerospike-client-go"
+	. "github.com/THE108/aerospike-client-go"
 )
 
 func main() {

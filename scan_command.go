@@ -15,8 +15,8 @@
 package aerospike
 
 import (
-	. "github.com/aerospike/aerospike-client-go/types"
-	Buffer "github.com/aerospike/aerospike-client-go/utils/buffer"
+	. "github.com/THE108/aerospike-client-go/types"
+	Buffer "github.com/THE108/aerospike-client-go/utils/buffer"
 )
 
 type scanCommand struct {

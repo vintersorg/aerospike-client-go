@@ -17,9 +17,9 @@ package aerospike
 import (
 	"time"
 
-	"github.com/aerospike/aerospike-client-go/pkg/bcrypt"
-	. "github.com/aerospike/aerospike-client-go/types"
-	Buffer "github.com/aerospike/aerospike-client-go/utils/buffer"
+	"github.com/THE108/aerospike-client-go/pkg/bcrypt"
+	. "github.com/THE108/aerospike-client-go/types"
+	Buffer "github.com/THE108/aerospike-client-go/utils/buffer"
 )
 
 const (

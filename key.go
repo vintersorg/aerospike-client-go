@@ -19,10 +19,10 @@ import (
 	"fmt"
 	"hash"
 
-	"github.com/aerospike/aerospike-client-go/pkg/ripemd160"
-	. "github.com/aerospike/aerospike-client-go/types"
-	ParticleType "github.com/aerospike/aerospike-client-go/types/particle_type"
-	Buffer "github.com/aerospike/aerospike-client-go/utils/buffer"
+	"github.com/THE108/aerospike-client-go/pkg/ripemd160"
+	. "github.com/THE108/aerospike-client-go/types"
+	ParticleType "github.com/THE108/aerospike-client-go/types/particle_type"
+	Buffer "github.com/THE108/aerospike-client-go/utils/buffer"
 )
 
 // Key is the unique record identifier. Records can be identified using a specified namespace,

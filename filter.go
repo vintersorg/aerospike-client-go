@@ -15,7 +15,7 @@
 package aerospike
 
 import (
-	Buffer "github.com/aerospike/aerospike-client-go/utils/buffer"
+	Buffer "github.com/THE108/aerospike-client-go/utils/buffer"
 )
 
 // Filter specifies a query filter definition.

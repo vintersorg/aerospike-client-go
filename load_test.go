@@ -24,10 +24,10 @@ import (
 	"runtime"
 	"time"
 
-	. "github.com/aerospike/aerospike-client-go"
-	// . "github.com/aerospike/aerospike-client-go/logger"
+	. "github.com/THE108/aerospike-client-go"
+	// . "github.com/THE108/aerospike-client-go/logger"
 
-	// . "github.com/aerospike/aerospike-client-go/utils/buffer"
+	// . "github.com/THE108/aerospike-client-go/utils/buffer"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

@@ -25,7 +25,7 @@ import (
 	"strings"
 	"sync"
 
-	. "github.com/aerospike/aerospike-client-go/types"
+	. "github.com/THE108/aerospike-client-go/types"
 )
 
 // Client encapsulates an Aerospike cluster.

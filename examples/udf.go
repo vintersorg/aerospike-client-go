@@ -21,8 +21,8 @@ import (
 	"bytes"
 	"log"
 
-	as "github.com/aerospike/aerospike-client-go"
-	shared "github.com/aerospike/aerospike-client-go/examples/shared"
+	as "github.com/THE108/aerospike-client-go"
+	shared "github.com/THE108/aerospike-client-go/examples/shared"
 )
 
 const udf = `

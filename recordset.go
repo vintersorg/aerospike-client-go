@@ -17,7 +17,7 @@ package aerospike
 import (
 	"sync"
 
-	. "github.com/aerospike/aerospike-client-go/types/atomic"
+	. "github.com/THE108/aerospike-client-go/types/atomic"
 )
 
 type Result struct {

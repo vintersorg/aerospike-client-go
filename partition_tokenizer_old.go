@@ -18,9 +18,9 @@ import (
 	"strconv"
 	"strings"
 
-	. "github.com/aerospike/aerospike-client-go/logger"
-	. "github.com/aerospike/aerospike-client-go/types"
-	. "github.com/aerospike/aerospike-client-go/types/atomic"
+	. "github.com/THE108/aerospike-client-go/logger"
+	. "github.com/THE108/aerospike-client-go/types"
+	. "github.com/THE108/aerospike-client-go/types/atomic"
 )
 
 // Parse node partitions using old protocol. This is more code than a String.split() implementation,

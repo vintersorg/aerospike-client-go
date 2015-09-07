@@ -15,7 +15,7 @@
 package aerospike
 
 import (
-	. "github.com/aerospike/aerospike-client-go/types"
+	. "github.com/THE108/aerospike-client-go/types"
 )
 
 // BinMap is used to define a map of bin names to values.

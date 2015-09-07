@@ -17,7 +17,7 @@ package aerospike_test
 import (
 	"time"
 
-	. "github.com/aerospike/aerospike-client-go"
+	. "github.com/THE108/aerospike-client-go"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

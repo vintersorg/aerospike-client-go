@@ -20,7 +20,7 @@ import (
 
 	. "github.com/onsi/gomega"
 
-	// . "github.com/aerospike/aerospike-client-go/logger"
+	// . "github.com/THE108/aerospike-client-go/logger"
 )
 
 type testBLOB struct {

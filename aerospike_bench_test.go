@@ -18,7 +18,7 @@ import (
 	"bytes"
 	"runtime"
 
-	. "github.com/aerospike/aerospike-client-go"
+	. "github.com/THE108/aerospike-client-go"
 
 	"testing"
 )

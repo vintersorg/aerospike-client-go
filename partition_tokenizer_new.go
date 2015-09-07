@@ -18,8 +18,8 @@ import (
 	"encoding/base64"
 	"strings"
 
-	. "github.com/aerospike/aerospike-client-go/types"
-	. "github.com/aerospike/aerospike-client-go/types/atomic"
+	. "github.com/THE108/aerospike-client-go/types"
+	. "github.com/THE108/aerospike-client-go/types/atomic"
 )
 
 // Parse node partitions using new protocol. This is more code than a String.split() implementation,

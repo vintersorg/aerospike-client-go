@@ -21,7 +21,7 @@ import (
 	"strings"
 	"time"
 
-	as "github.com/aerospike/aerospike-client-go"
+	as "github.com/THE108/aerospike-client-go"
 )
 
 var host = flag.String("h", "127.0.0.1", "host (default 127.0.0.1)")

@@ -17,9 +17,9 @@ package aerospike
 import (
 	"fmt"
 
-	. "github.com/aerospike/aerospike-client-go/types"
-	ParticleType "github.com/aerospike/aerospike-client-go/types/particle_type"
-	Buffer "github.com/aerospike/aerospike-client-go/utils/buffer"
+	. "github.com/THE108/aerospike-client-go/types"
+	ParticleType "github.com/THE108/aerospike-client-go/types/particle_type"
+	Buffer "github.com/THE108/aerospike-client-go/utils/buffer"
 )
 
 type unpacker struct {
