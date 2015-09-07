@@ -17,9 +17,12 @@ package aerospike
 import (
 	"errors"
 	"fmt"
+	"os"
 	"time"
 
 	. "github.com/aerospike/aerospike-client-go/logger"
+
+	log "github.com/THE108/logger"
 
 	. "github.com/aerospike/aerospike-client-go/types"
 	Buffer "github.com/aerospike/aerospike-client-go/utils/buffer"
@@ -927,6 +930,11 @@ func (cmd *baseCommand) execute(ifc command) (err error) {
 	// set timeout outside the loop
 	limit := time.Now().Add(policy.Timeout)
 
+	scope := log.NewScope(os.Stdout, "debug", log.DEBUG)
+	defer scope.Flush()
+
+	scope.Debug("start execute command")
+
 	// Execute command until successful, timed out or maximum iterations have been reached.
 	for {
 		// too many retries
@@ -944,6 +952,8 @@ func (cmd *baseCommand) execute(ifc command) (err error) {
 			break
 		}
 
+		scope.Debug("getting node")
+
 		node, err := ifc.getNode(ifc)
 		if err != nil {
 			// Node is currently inactive.  Retry.
@@ -953,6 +963,8 @@ func (cmd *baseCommand) execute(ifc command) (err error) {
 		// set command node, so when you return a record it has the node
 		cmd.node = node
 
+		scope.Debug("getting connection")
+
 		cmd.conn, err = node.GetConnection(policy.Timeout)
 		if err != nil {
 			// Socket connection error has occurred. Decrease health and retry.
@@ -961,6 +973,8 @@ func (cmd *baseCommand) execute(ifc command) (err error) {
 			Logger.Warn("Node " + node.String() + ": " + err.Error())
 			continue
 		}
+
+		scope.Debug("getting buffer")
 
 		// Draw a buffer from buffer pool, and make sure it will be put back
 		cmd.dataBuffer = bufPool.Get()
@@ -978,6 +992,8 @@ func (cmd *baseCommand) execute(ifc command) (err error) {
 		// Reset timeout in send buffer (destined for server) and socket.
 		Buffer.Int32ToBytes(int32(policy.Timeout/time.Millisecond), cmd.dataBuffer, 22)
 
+		scope.Debug("send command")
+
 		// Send command.
 		_, err = cmd.conn.Write(cmd.dataBuffer[:cmd.dataOffset])
 		if err != nil {
@@ -992,6 +1008,8 @@ func (cmd *baseCommand) execute(ifc command) (err error) {
 			continue
 		}
 
+		scope.Debug("parse result")
+
 		// Parse results.
 		err = ifc.parseResult(ifc, cmd.conn)
 		if err != nil {
@@ -1005,8 +1023,13 @@ func (cmd *baseCommand) execute(ifc command) (err error) {
 			} else {
 				node.InvalidateConnection(cmd.conn)
 			}
+
+			scope.Errorf("error: %s", err)
+
 			return err
 		}
+
+		scope.Debug("end")
 
 		// Reflect healthy status.
 		node.RestoreHealth()

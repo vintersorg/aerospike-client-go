@@ -295,6 +295,11 @@ func (nd *Node) GetHost() *Host {
 	return nd.host
 }
 
+// GetConnectionCount retrieves connection count
+func (nd *Node) GetConnectionCount() int {
+	return nd.connectionCount.Get()
+}
+
 // IsActive Checks if the node is active.
 func (nd *Node) IsActive() bool {
 	return nd.active.Get()
