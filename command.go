@@ -963,7 +963,7 @@ func (cmd *baseCommand) execute(ifc command) (err error) {
 		// set command node, so when you return a record it has the node
 		cmd.node = node
 
-		scope.Debug("getting connection")
+		scope.Debugf("getting connection with timeout %v", policy.Timeout)
 
 		cmd.conn, err = node.GetConnection(policy.Timeout)
 		if err != nil {

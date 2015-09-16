@@ -15,10 +15,13 @@
 package aerospike
 
 import (
+	"os"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
+
+	log "github.com/THE108/logger"
 
 	. "github.com/THE108/aerospike-client-go/logger"
 	. "github.com/THE108/aerospike-client-go/types"
@@ -206,17 +209,29 @@ func (nd *Node) updatePartitions(conn *Connection, infoMap map[string]string) er
 func (nd *Node) GetConnection(timeout time.Duration) (conn *Connection, err error) {
 	tBegin := time.Now()
 	pollTries := 0
+
+	scope := log.NewScope(os.Stdout, "debug", log.DEBUG)
+	defer scope.Flush()
+
+	scope.Debugf("start connecting %v", tBegin)
+
 L:
 	for timeout == 0 || time.Now().Sub(tBegin) <= timeout {
+
+		scope.Debugf("poll")
+
 		if t := nd.connections.Poll(); t != nil {
 			conn = t.(*Connection)
 			if conn.IsConnected() && !conn.isIdle() {
 				if err := conn.SetTimeout(timeout); err == nil {
+					scope.Debugf("return conn")
 					return conn, nil
 				}
 			}
 			nd.InvalidateConnection(conn)
 		}
+
+		scope.Debugf("before check pool size")
 
 		// if connection count is limited and enough connections are already created, don't create a new one
 		if nd.cluster.clientPolicy.LimitConnectionsToQueueSize && nd.connectionCount.Get() >= nd.cluster.clientPolicy.ConnectionQueueSize {
@@ -230,9 +245,13 @@ L:
 			break L
 		}
 
+		scope.Debugf("before connect with timeout %v", nd.cluster.clientPolicy.Timeout)
+
 		if conn, err = NewConnection(nd.address, nd.cluster.clientPolicy.Timeout); err != nil {
 			return nil, err
 		}
+
+		scope.Debugf("before authenticate")
 
 		// need to authenticate
 		if err = conn.Authenticate(nd.cluster.user, nd.cluster.Password()); err != nil {
@@ -254,6 +273,9 @@ L:
 		nd.connectionCount.IncrementAndGet()
 		return conn, nil
 	}
+
+	scope.Error("return error: no connection available")
+
 	return nil, NewAerospikeError(NO_AVAILABLE_CONNECTIONS_TO_NODE)
 }
 
