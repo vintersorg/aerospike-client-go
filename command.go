@@ -931,7 +931,7 @@ func (cmd *baseCommand) execute(ifc command) (err error) {
 	limit := time.Now().Add(policy.Timeout)
 
 	// set logging level from internal logger
-	scope := log.NewScope(os.Stdout, "aerospike client debug", int(Logger.GetLogger()) + 1)
+	scope := log.NewScope(os.Stdout, "aerospike client debug", int(Logger.GetLevel()) + 1)
 	defer scope.Flush()
 
 	scope.Debug("start execute command")
