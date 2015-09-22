@@ -68,6 +68,14 @@ func (lgr *logger) SetLevel(level LogPriority) {
 	lgr.level = level
 }
 
+// GetLevel gets logging level.
+func (lgr *logger) GetLevel() LogPriority {
+	lgr.mutex.Lock()
+	defer lgr.mutex.Unlock()
+
+	return lgr.level
+}
+
 // Error logs a message if log level allows to do so.
 func (lgr *logger) LogAtLevel(level LogPriority, format string, v ...interface{}) {
 	switch level {

@@ -930,7 +930,8 @@ func (cmd *baseCommand) execute(ifc command) (err error) {
 	// set timeout outside the loop
 	limit := time.Now().Add(policy.Timeout)
 
-	scope := log.NewScope(os.Stdout, "debug", log.DEBUG)
+	// set logging level from internal logger
+	scope := log.NewScope(os.Stdout, "aerospike client debug", int(Logger.GetLogger()) + 1)
 	defer scope.Flush()
 
 	scope.Debug("start execute command")
