@@ -15,13 +15,10 @@
 package aerospike
 
 import (
-	"os"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
-
-	log "github.com/THE108/logger"
 
 	. "github.com/THE108/aerospike-client-go/logger"
 	. "github.com/THE108/aerospike-client-go/types"
